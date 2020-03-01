@@ -17,7 +17,7 @@ except:
     SITES = ["google.com", "comcast.com"]
 
 
-# turn off the usb port connected to the power strip for 2 minutes
+# turn off the usb port connected to the power strip for DELAY_BETWEEN_TESTS time
 def turn_off_usb(reboot):
     if reboot == 0:
       cmd = "sudo /home/pi/uhubctl/uhubctl -l 1-1 -a off"
