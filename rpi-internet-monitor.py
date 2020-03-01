@@ -30,11 +30,13 @@ def turn_off_usb(reboot):
         debug_message(debug, output)
         time.sleep(DELAY_BETWEEN_TESTS) # wait for the router to boot back up befoe continuing
         time.sleep(DELAY_BETWEEN_TESTS)
+        print("--- Rebooted the router! ---")
       except subprocess.CalledProcessError:
         debug_message(debug, cmd + ": error")
         return 0    
     else:
         debug_message(debug, "--- waiting a long time ---")
+        print("--- In long wait loop. ---")
         time.sleep(LONG_DELAY)
         return 1
 
