@@ -3,6 +3,7 @@
 import subprocess
 import sys
 import time
+from datetime import datetime
 
 try:
     sys.argv[2] == "-test" # force a router reboot
@@ -96,7 +97,10 @@ while True:
   if success == 0:
       debug_message(debug, "---- No internet - restarting router ----")
       reboot+=1
-      turn_off_usb(reboot)
+      ret_reboot = turn_off_usb(reboot)
+      if ret_reboot == 0:
+          with open('reboot_flg.txt', 'w') as f: 
+              f.write(datetime.now().strftime('%B %d, %Y %I:%M:%S %p')) 
   else:
       debug_message(debug, "---- Internet is working fine ----")
       reboot = -1
